@@ -8,6 +8,7 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
+import * as fromCart from 'src/app/core/reducers/cart.reducer';
 import * as fromLayout from 'src/app/core/reducers/layout.reducer';
 import { environment } from '../../environments/environment';
 
@@ -15,6 +16,7 @@ const rootKey = 'Root reducers token';
 
 export interface State {
   [fromLayout.layoutFeatureKey]: fromLayout.State;
+  [fromCart.cartFeatureKey]: fromCart.State;
   router: fromRouter.RouterReducerState<any>;
 }
 
@@ -23,6 +25,7 @@ export const ROOT_REDUCERS = new InjectionToken<
 >(rootKey, {
   factory: () => ({
     [fromLayout.layoutFeatureKey]: fromLayout.reducer,
+    [fromCart.cartFeatureKey]: fromCart.reducer,
     router: fromRouter.routerReducer,
   }),
 });
@@ -56,6 +59,21 @@ export const selectOpenDrawer = createSelector(
   selectLayoutState,
   fromLayout.getOpenDrawer
 );
+
+export const selectOpenCartPopup = createSelector(
+  selectLayoutState,
+  fromLayout.getOpenCartPopup
+);
+
+/**
+ * Cart Selectors
+ */
+export const selectCartState = createFeatureSelector<fromCart.State>(
+  fromCart.cartFeatureKey
+);
+
+export const { selectAll: selectAllCartItems } =
+  fromCart.adapter.getSelectors(selectCartState);
 
 /**
  * Router Selectors

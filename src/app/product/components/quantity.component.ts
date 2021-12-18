@@ -1,6 +1,8 @@
 import {
   ChangeDetectionStrategy,
-  Component, EventEmitter, Input,
+  Component,
+  EventEmitter,
+  Input,
   Output
 } from '@angular/core';
 
@@ -10,7 +12,12 @@ import {
   template: `
     <div class="flex items-center bg-muted rounded-xl overflow-hidden">
       <!-- minus -->
-      <button type="button" class="p-6 duration-200 hover:bg-primary-50">
+      <button
+        (click)="add(-1)"
+        [disabled]="quantity === min"
+        type="button"
+        class="p-6 duration-200 hover:bg-primary-50 disabled:opacity-25"
+      >
         <img src="/assets/images/icon-minus.svg" alt="Minus" />
       </button>
       <!-- end minus -->
@@ -20,7 +27,12 @@ import {
       </p>
 
       <!-- plus -->
-      <button type="button" class="p-6 duration-200 hover:bg-primary-50">
+      <button
+        (click)="add(1)"
+        [disabled]="quantity === max"
+        type="button"
+        class="p-6 duration-200 hover:bg-primary-50 disabled:opacity-25"
+      >
         <img src="/assets/images/icon-plus.svg" alt="Plus" />
       </button>
       <!-- end plus -->
@@ -28,6 +40,16 @@ import {
   `,
 })
 export class QuantityComponent {
-  @Input() quantity!: number;
+  @Input() max = 1000;
+  @Input() min = 0;
+  @Input() quantity = 0;
   @Output() quantityChange = new EventEmitter<number>();
+
+  add(value: number) {
+    const result = Math.min(
+      Math.max(this.quantity + value, this.min),
+      this.max
+    );
+    this.quantityChange.emit(result)
+  }
 }

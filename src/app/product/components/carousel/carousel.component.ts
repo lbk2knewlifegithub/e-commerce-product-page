@@ -14,7 +14,7 @@ import {
   OnInit
 } from '@angular/core';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { ProductImage } from '../../models';
+import { ProductImage } from 'src/app/shared/models';
 /**
  * - My first carousel component
  */

@@ -1,8 +1,15 @@
-import { Product } from './models';
+import { Item, Product } from './models';
 
-export const imagesProduct = [];
+export const item: Item = {
+  id: 1,
+  name: 'Fall Limited Edition Sneakers',
+  price: 125,
+  thumbnail: 'assets/images/image-product-1-thumbnail.jpg',
+  quantity: 2,
+};
 
 export const product: Product = {
+  id: 1,
   company: 'Sneaker Company',
   name: 'Fall Limited Edition Sneakers',
   description:

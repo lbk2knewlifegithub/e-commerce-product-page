@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './core/containers/app.component';
 import { CoreModule } from './core/core.module';
+import { CartEffects } from './core/effects';
 import { metaReducers, ROOT_REDUCERS } from './reducers';
 
 @NgModule({

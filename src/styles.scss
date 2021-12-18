@@ -40,11 +40,18 @@
 }
 
 @layer components {
-  .badge-primary{
+  .badge-primary {
     @apply bg-primary-50 py-1 px-2 font-black text-primary rounded-md;
   }
 
-  .scale-effect{
+  .scale-effect {
     @apply duration-100 hover:scale-105;
+  }
+  .btn {
+    @apply inline-block rounded-lg py-4 px-10 hover:opacity-50 font-black shadow-xl;
+  }
+
+  .btn-primary {
+    @apply bg-primary  shadow-primary/80 text-white;
   }
 }

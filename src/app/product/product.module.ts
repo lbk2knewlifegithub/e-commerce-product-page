@@ -6,7 +6,7 @@ import {
   CarouselComponent, PriceComponent,
   QuantityComponent
 } from './components';
-import { ProductPageComponent } from './containers';
+import { ViewProductPageComponent } from './containers';
 import { ProductRoutingModule } from './product-routing.module';
 
 const COMPONENTS = [
@@ -16,7 +16,7 @@ const COMPONENTS = [
   PriceComponent,
   AddToCardComponent,
 ];
-const CONTAINERS = [ProductPageComponent];
+const CONTAINERS = [ViewProductPageComponent];
 
 @NgModule({
   imports: [CommonModule, ProductRoutingModule],

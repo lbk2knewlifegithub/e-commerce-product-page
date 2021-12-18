@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Price } from '../models';
+import { Price } from 'src/app/shared/models';
 
 @Component({
   selector: 'lbk-price',
