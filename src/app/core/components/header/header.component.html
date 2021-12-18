@@ -35,7 +35,7 @@
 
     <!-- cart popup-->
     <lbk-cart-popup @slideInTop *ngIf="openCartPopup$ | async" (delete)="reduceQuantity($event)"
-      class="z-40 block absolute pl-3 right-3 top-[calc(100%+10px)]  sm:min-w-[324px] sm:px-0 sm:right-10 lg:top-full" [cart]="(cart$ | async)!">
+      class="z-40 absolute block pl-6 w-full right-3 top-[calc(100%+10px)] sm:pl-0 sm:w-auto  sm:min-w-[324px] sm:px-0 sm:right-10 lg:top-full" [cart]="(cart$ | async)!">
     </lbk-cart-popup>
     <!-- end cart popup-->
   </nav>
