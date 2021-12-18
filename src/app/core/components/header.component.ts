@@ -1,37 +1,56 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromRoot from 'src/app/reducers';
+import { LayoutActions } from '../actions';
 
 @Component({
   selector: 'lbk-header',
   template: `
     <header class="">
       <nav class="container py-4 flex justify-between items-center">
-        <div class="flex gap-2 items-center">
-          <!-- hamburger -->
-          <img src="/assets/images/icon-menu.svg" alt="Menu" />
-          <!-- end hamburger -->
+        <div class="flex gap-3 items-start">
+          <!-- drawer -->
+          <lbk-drawer
+            class="block"
+            (closed)="closed()"
+            (opened)="opened()"
+            [open]="(openDrawer$ | async)!"
+          ></lbk-drawer>
+          <!-- end drawer -->
 
           <!-- logo -->
-          <img src="/assets/images/logo.svg" alt="Logo" />
+          <a class="inline-block" routerLink="/">
+            <img src="/assets/images/logo.svg" alt="Logo" />
+          </a>
           <!-- end logo -->
         </div>
 
-        <div class="flex gap-2 items-center">
+        <div class="flex gap-4 items-center">
           <!-- cart -->
-          <div>
-            <img src="/assets/images/icon-cart.svg" alt="Cart" />
-          </div>
+          <lbk-cart class="block"></lbk-cart>
           <!-- end cart -->
 
-          <!-- avatar -->
-          <img
-            class="w-8 h-8 rounded-full"
-            src="/assets/images/image-avatar.png"
-            alt="Avatar"
-          />
-          <!-- end avatar -->
+          <!-- profile -->
+          <lbk-profile class="block"></lbk-profile>
+          <!-- end profile -->
         </div>
       </nav>
     </header>
   `,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  openDrawer$!: Observable<boolean>;
+
+  constructor(private readonly _store: Store) {
+    this.openDrawer$ = _store.select(fromRoot.selectOpenDrawer);
+  }
+
+  closed() {
+    this._store.dispatch(LayoutActions.closeDrawer());
+  }
+
+  opened() {
+    this._store.dispatch(LayoutActions.openDrawer());
+  }
+}

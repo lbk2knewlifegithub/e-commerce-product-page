@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import {
   AddToCardComponent,
   ArrowButtonComponent,
-  CarouselComponent,
-  PriceComponent,
+  CarouselComponent, PriceComponent,
   QuantityComponent
 } from './components';
 import { ProductPageComponent } from './containers';

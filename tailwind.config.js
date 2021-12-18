@@ -52,7 +52,7 @@ module.exports = {
         'muted-50': withOpacity("--grayish-blue"),
       },
       borderColor: {
-        danger: withOpacity("--border-danger"),
+        primary: withOpacity("--border-primary"),
       },
     },
   },
