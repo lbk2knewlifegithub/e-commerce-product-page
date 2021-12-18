@@ -26,36 +26,37 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        'primary': withOpacity("--orange"),
+      },
       // create custom fonts here
       fontFamily: {
-        heading: "'LoraRegular', 'serif'",
-        mono: ["'DMMonoRegular'", ...defaultTheme.fontFamily.mono],
+        mono: ["'Kumbh Sans'", ...defaultTheme.fontFamily.mono],
       },
       // create custom text colors here
       textColor: {
         fill: withOpacity("--text-fill"),
         muted: withOpacity("--text-muted"),
+        'muted-50': withOpacity("--grayish-blue"),
         inverted: withOpacity("--text-inverted"),
+        primary: withOpacity("--text-primary"),
       },
       // create custom background colors here
       backgroundColor: {
         fill: withOpacity("--bg-fill"),
-        footer: withOpacity("--bg-footer"),
-        "button-accent": withOpacity("--bg-button-accent"),
-        "button-accent-hover": withOpacity("--bg-button-accent-hover"),
-        "button-muted": withOpacity("--bg-button-muted"),
+        muted: withOpacity("--bg-muted"),
+        primary: withOpacity("--bg-primary"),
+        "primary-50": withOpacity("--bg-primary-50"),
+      },
+      decorationColor: {
+        'muted-50': withOpacity("--grayish-blue"),
       },
       borderColor: {
         danger: withOpacity("--border-danger"),
       },
-      // create custom gradient color here
-      gradientColorStops: {
-        hue: withOpacity("--color-fill"),
-      },
     },
   },
   plugins: [
-    require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),
     plugin(function ({ addComponents }) {
       addComponents({

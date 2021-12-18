@@ -1,0 +1,22 @@
+<div class="relative h-full overflow-hidden">
+  <!-- slide -->
+  <div #slide [style]="translate(slide)" (transitionend)="onTransitionEnd(slide)" class="flex h-full">
+    <ng-container *ngFor="let image of productImages; index as i">
+      <img [style]="imageWidth(slide)" class="object-fill object-center h-full" [src]="image.src" alt="Product" />
+    </ng-container>
+  </div>
+  <!-- end slide -->
+
+  <!-- previous -->
+  <lbk-arrow-button
+    class="absolute translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect"
+    name="previous" (click)="previous(slide)">
+  </lbk-arrow-button>
+  <!-- end previous -->
+
+  <!-- next -->
+  <lbk-arrow-button
+    class="absolute right-0 -translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect"
+    (click)="next(slide)" name="next"></lbk-arrow-button>
+  <!-- end next -->
+</div>

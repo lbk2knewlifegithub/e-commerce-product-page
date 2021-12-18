@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    // colors
+    --white: 0, 0%, 100%;
+    --orange: 26, 100%, 55%;
+    --pale-orange: 25, 100%, 94%;
+    --very-dark-blue: 220, 13%, 13%;
+    --dark-grayish-blue: 219, 9%, 45%;
+    --grayish-blue: 220, 14%, 75%;
+    --light-grayish-blue: 223, 64%, 98%;
+
+    ////////////////////
+    // text colors /////
+    ////////////////////
+    --text-fill: var(--very-dark-blue);
+    --text-muted: var(--dark-grayish-blue);
+    --text-muted-50: var(--grayish-blue);
+    --text-inverted: var(--white);
+    --text-primary: var(--orange);
+
+    /////////////////////////////
+    // background colors /////////
+    /////////////////////////////
+    --bg-fill: var(--white);
+    --bg-primary: var(--orange);
+    --bg-primary-50: var(--pale-orange);
+    --bg-muted: var(--light-grayish-blue);
+    // 75% opacity for lightbox background): hsl(0, 0%, 0%)
+    // --bg-lightbox: 0, 0%, 0%, 75%;
+
+    /////////////////////////////
+    // border colors /////////////
+    /////////////////////////////
+    --border-primary: var(--grayish-blue);
+  }
+}
+
+@layer components {
+  .badge-primary{
+    @apply bg-primary-50 py-1 px-2 font-black text-primary rounded-md;
+  }
+
+  .scale-effect{
+    @apply duration-100 hover:scale-105;
+  }
+}
