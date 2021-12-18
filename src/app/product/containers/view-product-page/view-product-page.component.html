@@ -1,12 +1,12 @@
 <main class="pb-20 sm:pb-32 lg:pb-0 lg:mt-20">
-  <div class="lg:container lg:grid lg:grid-cols-2 lg:gap-20">
+  <div class="lg:container lg:grid lg:grid-cols-2 lg:gap-10 xl:gap-24">
     <!-- carousel mobile and tablet -->
     <lbk-carousel class="block h-full aspect-[4/3] md:aspect-video lg:hidden" [productImages]="product.images">
     </lbk-carousel>
     <!-- end carousel mobile and tablet -->
 
     <!-- carousel desktop -->
-    <div class="hidden pl-12 lg:block ">
+    <div class="hidden pl-8 lg:block xl:pl-14">
       <lbk-carousel-thumbnails (image)="onImageCarousel($event)" class="block" [images]="product.images">
       </lbk-carousel-thumbnails>
     </div>
@@ -40,7 +40,7 @@
       <lbk-price class="block my-6 md:my-8 lg:my-12" [price]="product.price"></lbk-price>
       <!-- end price -->
 
-      <div class="flex flex-col gap-4 md:gap-8 lg:flex-row">
+      <div class="flex flex-col gap-4 md:gap-8 lg:flex-row lg:gap-6">
         <!-- quantity -->
         <lbk-quantity [(quantity)]="quantity"></lbk-quantity>
         <!-- end quantity -->
