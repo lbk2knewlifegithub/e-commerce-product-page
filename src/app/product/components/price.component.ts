@@ -5,7 +5,7 @@ import { Price } from 'src/app/shared/models';
   selector: 'lbk-price',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center lg:flex-col lg:items-start">
       <div class="flex items-center gap-4">
         <!-- price saled -->
         <p class="font-black text-3xl">{{ priceSaled | currency }}</p>

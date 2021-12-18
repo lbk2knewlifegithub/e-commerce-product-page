@@ -22,7 +22,7 @@ import {
       </button>
       <!-- end minus -->
 
-      <p class="grow text-center font-black ">
+      <p class="grow text-center font-black px-2">
         {{ quantity }}
       </p>
 

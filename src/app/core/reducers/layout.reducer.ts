@@ -10,7 +10,7 @@ export interface State {
 
 const initialState: State = {
   openDrawer: false,
-  openCartPopup: true
+  openCartPopup: false
   // openCartPopup: false
 };
 

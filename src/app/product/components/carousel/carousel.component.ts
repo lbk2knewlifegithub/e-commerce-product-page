@@ -9,9 +9,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
+  EventEmitter,
   Input,
   OnDestroy,
-  OnInit
+  OnInit,
+  Output,
+  ViewChild
 } from '@angular/core';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
 import { ProductImage } from 'src/app/shared/models';
@@ -30,10 +34,24 @@ import { ProductImage } from 'src/app/shared/models';
   ],
 })
 export class CarouselComponent implements OnInit, OnDestroy {
+  @ViewChild('slide') slideRef!: ElementRef;
+
   @Input() productImages!: ProductImage[];
+  @Input() showNavigation = true;
+  @Input() set index(i: number) {
+    if (this.slideRef) {
+       this.applyTransition(this.slideRef.nativeElement);
+    }
+
+    this._index = i;
+  }
+
+  _index = 1;
+
+  @Output() indexChange = new EventEmitter<number>();
+
   lastClone!: ProductImage;
   firstClone!: ProductImage;
-  index = 1;
   subscription!: Subscription;
 
   constructor(private cdf: ChangeDetectorRef) {}
@@ -93,5 +111,9 @@ export class CarouselComponent implements OnInit, OnDestroy {
   }
   imageWidth(slide: HTMLElement): any {
     return { 'min-width': slide.clientWidth + 'px' };
+  }
+
+  get index(): number {
+    return this._index;
   }
 }

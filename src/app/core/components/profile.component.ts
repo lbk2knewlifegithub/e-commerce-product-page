@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <button type="button">
       <img
-        class="inline-block w-8 h-8 rounded-full border-2 duration-200 border-transparent hover:border-primary"
+        class="inline-block w-8 h-8 rounded-full border-2 duration-200 border-transparent hover:border-primary lg:w-10 lg:h-10"
         src="/assets/images/image-avatar.png"
         alt="Avatar"
       />

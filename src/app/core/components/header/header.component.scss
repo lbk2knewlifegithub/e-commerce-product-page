@@ -1,0 +1,9 @@
+.links-desktop {
+  @apply hidden lg:flex gap-10 py-10 text-muted;
+
+  li {
+    a {
+      @apply pb-10 hover:border-b-4 hover:border-primary;
+    }
+  }
+}

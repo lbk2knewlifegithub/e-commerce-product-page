@@ -33,7 +33,7 @@ import { slideInLeft } from '../../shared/animations';
     >
       <div
         @slideInLeft
-        class="bg-white w-[60%] p-8 grid gap-10 place-content-start h-full"
+        class="bg-white w-[60%] p-8 grid gap-10 place-content-start h-full sm:w-[30%]"
       >
         <!-- close -->
         <button (click)="closed.emit()" type="button">

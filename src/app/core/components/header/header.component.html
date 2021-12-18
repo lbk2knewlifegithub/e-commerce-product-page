@@ -1,0 +1,42 @@
+<header class="">
+  <nav class="container relative flex items-center justify-between py-4 shadow-sm lg:py-0">
+    <div class="flex items-center gap-3 lg:gap-16">
+      <!-- drawer -->
+      <lbk-drawer class="block lg:hidden" (closed)="closeDrawer()" (opened)="openDrawer()"
+        [open]="(openDrawer$ | async)!"></lbk-drawer>
+      <!-- end drawer -->
+
+      <!-- logo -->
+      <a class="inline-block " routerLink="/">
+        <img src="/assets/images/logo.svg" alt="Logo" />
+      </a>
+      <!-- end logo -->
+
+      <!-- links desktop -->
+      <ul class="links-desktop">
+        <li><a href="#">Collections</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <!-- end links desktop -->
+    </div>
+
+    <div class="flex items-center gap-4 md:gap-8">
+      <!-- cart -->
+      <lbk-cart (click)="toggleCartPopup()" [cart]="(cart$ | async)!" class="block"></lbk-cart>
+      <!-- end cart -->
+
+      <!-- profile -->
+      <lbk-profile class="block"></lbk-profile>
+      <!-- end profile -->
+    </div>
+
+    <!-- cart popup-->
+    <lbk-cart-popup @slideInTop *ngIf="openCartPopup$ | async" (delete)="reduceQuantity($event)"
+      class="block min-w-[324px] absolute pl-3 right-3 top-[calc(100%+10px)] sm:px-0 sm:right-10 z-40" [cart]="(cart$ | async)!">
+    </lbk-cart-popup>
+    <!-- end cart popup-->
+  </nav>
+</header>

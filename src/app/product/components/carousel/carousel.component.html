@@ -8,15 +8,14 @@
   <!-- end slide -->
 
   <!-- previous -->
-  <lbk-arrow-button
-    class="absolute translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect"
+  <lbk-arrow-button *ngIf="showNavigation" class="absolute translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect"
     name="previous" (click)="previous(slide)">
   </lbk-arrow-button>
   <!-- end previous -->
 
   <!-- next -->
-  <lbk-arrow-button
-    class="absolute right-0 -translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect"
-    (click)="next(slide)" name="next"></lbk-arrow-button>
+  <lbk-arrow-button *ngIf="showNavigation"
+    class="absolute right-0 -translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect" (click)="next(slide)" name="next">
+  </lbk-arrow-button>
   <!-- end next -->
 </div>

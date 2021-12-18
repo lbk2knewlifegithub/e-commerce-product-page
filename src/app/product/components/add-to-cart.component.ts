@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <button
       type="button"
-      class="btn btn-primary w-full justify-center flex gap-2"
+      class="btn btn-primary w-full justify-center flex gap-2 lg:px-20"
     >
       <!-- cart icon -->
       <img src="/assets/images/icon-cart-white.svg" alt="Cart" />

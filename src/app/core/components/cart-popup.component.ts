@@ -11,8 +11,8 @@ import { Cart, Item } from 'src/app/shared/models';
   selector: 'lbk-cart-popup',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="container">
-      <div class="bg-white p-5 rounded-lg w-full ">
+    <div class="">
+      <div class="bg-white p-5 rounded-lg w-full shadow-lg">
         <!-- cart title -->
         <p class="font-bold pb-2 border-b-2 border-gray-200">Cart</p>
         <!-- end cart title -->
@@ -37,7 +37,7 @@ import { Cart, Item } from 'src/app/shared/models';
           <button
             (click)="checkout.emit()"
             type="button"
-            class="w-full btn btn-primary shadow-md shadow-primary mt-2"
+            class="w-full py-2 btn btn-primary shadow-md shadow-primary mt-2"
           >
             Checkout
           </button>
