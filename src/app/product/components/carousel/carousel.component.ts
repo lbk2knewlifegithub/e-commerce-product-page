@@ -46,6 +46,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
     }
 
     this._index = i;
+    this.indexChange.emit(i);
   }
 
   _index = 1;

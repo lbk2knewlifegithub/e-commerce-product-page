@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -54,6 +55,6 @@ import { ProductImage } from 'src/app/shared/models';
 export class CarouselThumbnailsComponent {
   @Input() images!: ProductImage[];
   @Input() v2 = false;
-  @Input() index = 1;
+  @Input()  index = 1 ;
   @Output() image = new EventEmitter<number>();
 }
