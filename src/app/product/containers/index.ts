@@ -1,1 +1,1 @@
-export * from "./view-product-page.component.ts";
+export * from "./view-product-page/view-product-page.component.ts";

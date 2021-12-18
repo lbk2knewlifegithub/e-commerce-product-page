@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {
   AddToCardComponent,
   ArrowButtonComponent,
-  CarouselComponent, CarouselThumbnailsComponent, PriceComponent,
+  CarouselComponent, CarouselPopupComponent, CarouselThumbnailsComponent, PriceComponent,
   QuantityComponent
 } from './components';
 import { ViewProductPageComponent } from './containers';
@@ -16,6 +16,7 @@ const COMPONENTS = [
   PriceComponent,
   AddToCardComponent,
   CarouselThumbnailsComponent,
+  CarouselPopupComponent,
 ];
 const CONTAINERS = [ViewProductPageComponent];
 

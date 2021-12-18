@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { ProductImage } from 'src/app/shared/models';
 
 @Component({
@@ -7,20 +13,24 @@ import { ProductImage } from 'src/app/shared/models';
   template: `
     <div class="">
       <lbk-carousel
-        [showNavigation]="false"
+        [rounded]="true"
+        (click)="image.emit(index)"
+        [navigation]="v2 ? 'border' : ''"
         [(index)]="index"
-        class="overflow-hidden rounded-lg aspect-square hidden lg:block cursor-pointer"
+        class="aspect-square hidden lg:block cursor-pointer {{
+          v2 ? '' : 'hover:opacity-50'
+        }}"
         [productImages]="images"
       ></lbk-carousel>
 
       <!-- thumbnails -->
-      <div class="relative flex gap-6 mt-6">
+      <div class="relative flex gap-6 mt-6 {{ v2 ? 'gap-4 mt-10 px-10' : '' }}">
         <ng-container *ngFor="let image of images; index as i">
           <button
             (click)="index = i + 1"
             type="button"
             [class.active]="index === i + 1"
-            class="rounded-lg overflow-hidden border-4 border-transparent"
+            class="rounded-xl overflow-hidden border-4 border-transparent"
           >
             <img
               class="w-full hover:opacity-50"
@@ -30,16 +40,20 @@ import { ProductImage } from 'src/app/shared/models';
           </button>
         </ng-container>
       </div>
+      <!-- end thumbnails -->
     </div>
-    <!-- end thumbnails -->
   `,
-  styles: [`
-  button.active{
-    @apply border-primary opacity-50;
-  }
-  `]
+  styles: [
+    `
+      button.active {
+        @apply border-primary opacity-50;
+      }
+    `,
+  ],
 })
 export class CarouselThumbnailsComponent {
   @Input() images!: ProductImage[];
-  index = 1;
+  @Input() v2 = false;
+  @Input() index = 1;
+  @Output() image = new EventEmitter<number>();
 }

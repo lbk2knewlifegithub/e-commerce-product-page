@@ -1,0 +1,54 @@
+<main class="pb-20 sm:pb-32 lg:pb-0 lg:mt-20">
+  <div class="lg:container lg:grid lg:grid-cols-2 lg:gap-20">
+    <!-- carousel mobile and tablet -->
+    <lbk-carousel class="block h-full aspect-[4/3] md:aspect-video lg:hidden" [productImages]="product.images">
+    </lbk-carousel>
+    <!-- end carousel mobile and tablet -->
+
+    <!-- carousel desktop -->
+    <div class="hidden pl-12 lg:block ">
+      <lbk-carousel-thumbnails (image)="onImageCarousel($event)" class="block" [images]="product.images">
+      </lbk-carousel-thumbnails>
+    </div>
+    <!-- end carousel desktop -->
+
+    <!-- carousel popup -->
+    <lbk-carousel-popup [index]="indexImageCarousel" class="fixed" [images]="product.images" [(open)]="carouselPopup">
+    </lbk-carousel-popup>
+    <!-- end carousel popup -->
+
+    <div class="container mt-6 lg:px-0 lg:mt-10 lg:order-last">
+      <!-- company -->
+      <h3 class="text-sm font-black tracking-wider uppercase text-primary md:text-lg lg:text-sm">
+        {{ product.company }}
+      </h3>
+      <!-- end company -->
+
+      <!-- name -->
+      <h2 class="mt-4 text-3xl font-black tracking-wide md:text-4xl">
+        {{ product.name }}
+      </h2>
+      <!-- end name -->
+
+      <!-- description -->
+      <p class="mt-4 font-medium text-muted md:text-lg lg:text-base lg:mt-10">
+        {{ product.description }}
+      </p>
+      <!-- end description -->
+
+      <!-- price -->
+      <lbk-price class="block my-6 md:my-8 lg:my-12" [price]="product.price"></lbk-price>
+      <!-- end price -->
+
+      <div class="flex flex-col gap-4 md:gap-8 lg:flex-row">
+        <!-- quantity -->
+        <lbk-quantity [(quantity)]="quantity"></lbk-quantity>
+        <!-- end quantity -->
+
+        <!-- add to cart -->
+        <lbk-add-to-cart (click)="addToCart(product, quantity)" class="block"></lbk-add-to-cart>
+      </div>
+      <!-- end add to cart -->
+    </div>
+  </div>
+</main>

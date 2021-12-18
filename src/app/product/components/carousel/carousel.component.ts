@@ -37,10 +37,12 @@ export class CarouselComponent implements OnInit, OnDestroy {
   @ViewChild('slide') slideRef!: ElementRef;
 
   @Input() productImages!: ProductImage[];
-  @Input() showNavigation = true;
+  @Input() navigation: 'inner' | 'border' | '' = 'inner';
+  @Input() rounded = false;
+  transitionEnd = false;
   @Input() set index(i: number) {
-    if (this.slideRef) {
-       this.applyTransition(this.slideRef.nativeElement);
+    if (this.slideRef && !this.transitionEnd) {
+      this.applyTransition(this.slideRef.nativeElement);
     }
 
     this._index = i;
@@ -70,6 +72,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
       .pipe(debounceTime(100))
       .subscribe(() => this.cdf.detectChanges());
   }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
@@ -85,12 +88,14 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
   previous(slide: HTMLElement): void {
     if (this.index <= 0) return;
+    this.transitionEnd = false;
     this.applyTransition(slide);
     this.index--;
   }
 
   next(slide: HTMLElement): void {
     if (this.index >= this.productImages.length - 1) return;
+    this.transitionEnd = false;
     this.applyTransition(slide);
     this.index = (this.index + 1) % this.productImages.length;
   }
@@ -101,19 +106,31 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
   onTransitionEnd(slide: HTMLElement): void {
     if (this.productImages[this.index] === this.lastClone) {
+      this.transitionEnd = true;
       slide.style.transition = 'none';
       this.index = this.productImages.length - 2;
     }
+
     if (this.productImages[this.index] === this.firstClone) {
+      this.transitionEnd = true;
       slide.style.transition = 'none';
       this.index = this.productImages.length - this.index;
     }
   }
+
   imageWidth(slide: HTMLElement): any {
     return { 'min-width': slide.clientWidth + 'px' };
   }
 
   get index(): number {
     return this._index;
+  }
+
+  get previousPosition(): string {
+    return this.navigation === 'inner' ? 'translate-x-1/2' : '-translate-x-1/2';
+  }
+
+  get nextPosition(): string {
+    return this.navigation === 'inner' ? '-translate-x-1/2' : 'translate-x-1/2';
   }
 }

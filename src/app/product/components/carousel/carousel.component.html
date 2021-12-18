@@ -1,21 +1,26 @@
-<div class="relative h-full overflow-hidden">
-  <!-- slide -->
-  <div #slide [style]="translate(slide)" (transitionend)="onTransitionEnd(slide)" class="flex h-full">
-    <ng-container *ngFor="let image of productImages; index as i">
-      <img [style]="imageWidth(slide)" class="object-fill object-center h-full" [src]="image.src" alt="Product" />
-    </ng-container>
+<div class="relative h-full">
+  <div class="relative h-full overflow-hidden {{rounded ? 'rounded-2xl': ''}}">
+    <!-- slide -->
+
+    <div #slide [style]="translate(slide)" (transitionend)="onTransitionEnd(slide)" class="flex h-full">
+      <ng-container *ngFor="let image of productImages; index as i">
+        <img [style]="imageWidth(slide)" class="object-center h-full" [src]="image.src" alt="Product" />
+      </ng-container>
+    </div>
+    <!-- end slide -->
+
   </div>
-  <!-- end slide -->
+
 
   <!-- previous -->
-  <lbk-arrow-button *ngIf="showNavigation" class="absolute translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect"
-    name="previous" (click)="previous(slide)">
+  <lbk-arrow-button *ngIf="navigation" class="absolute {{previousPosition }} -translate-y-1/2 top-1/2 scale-effect"
+    name="left" (click)="previous(slide)">
   </lbk-arrow-button>
   <!-- end previous -->
 
   <!-- next -->
-  <lbk-arrow-button *ngIf="showNavigation"
-    class="absolute right-0 -translate-x-1/2 -translate-y-1/2 top-1/2 scale-effect" (click)="next(slide)" name="next">
+  <lbk-arrow-button *ngIf="navigation" class="absolute right-0 {{nextPosition}} -translate-y-1/2 top-1/2 scale-effect"
+    (click)="next(slide)" name="right">
   </lbk-arrow-button>
   <!-- end next -->
 </div>

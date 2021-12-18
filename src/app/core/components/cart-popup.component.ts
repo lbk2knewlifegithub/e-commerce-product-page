@@ -11,10 +11,10 @@ import { Cart, Item } from 'src/app/shared/models';
   selector: 'lbk-cart-popup',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="">
+    <div id="cart-popup">
       <div class="bg-white p-5 rounded-lg w-full shadow-lg">
         <!-- cart title -->
-        <p class="font-bold pb-2 border-b-2 border-gray-200">Cart</p>
+        <p class="font-bold pb-2 border-b-2 border-gray-200 lg:text-lg">Cart</p>
         <!-- end cart title -->
 
         <!-- empty -->

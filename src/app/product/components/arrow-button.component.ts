@@ -6,16 +6,20 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   template: `
     <button
       type="button"
-      class="w-10 h-10 bg-white rounded-full grid place-content-center"
+      class="w-10 h-10 bg-white text-xl rounded-full grid place-content-center hover:text-primary"
     >
-      <img [src]="src" [alt]="name | titlecase" />
+      <i class="{{src}}"></i>
     </button>
   `,
 })
 export class ArrowButtonComponent {
-  @Input() name!: 'previous' | 'next';
+  @Input() name!: 'left' | 'right';
+
+  // get src(): string {
+  //   return `/assets/images/icon-${this.name}.svg`;
+  // }
 
   get src(): string {
-    return `/assets/images/icon-${this.name}.svg`;
+    return `fas fa-angle-${this.name}`;
   }
 }

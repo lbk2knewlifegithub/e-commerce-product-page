@@ -22,7 +22,7 @@ import { slideInLeft } from '../../shared/animations';
   template: `
     <!-- hamburger -->
     <button (click)="opened.emit()" type="button">
-      <img src="/assets/images/icon-menu.svg" alt="Menu" />
+      <img class="inline-block" src="/assets/images/icon-menu.svg" alt="Menu" />
     </button>
     <!-- end hamburger -->
 
@@ -47,11 +47,11 @@ import { slideInLeft } from '../../shared/animations';
 
         <!-- links -->
         <ul class="links">
-          <li><a href="#">Collections</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Women</a></li>
-          <li><a class="" href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a (click)="closed.emit()" routerLink="/">Collections</a></li>
+          <li><a (click)="closed.emit()" routerLink="/">Men</a></li>
+          <li><a (click)="closed.emit()" routerLink="/">Women</a></li>
+          <li><a (click)="closed.emit()" routerLink="/">About</a></li>
+          <li><a (click)="closed.emit()" routerLink="/">Contact</a></li>
         </ul>
         <!-- end links -->
       </div>
@@ -76,7 +76,7 @@ import { slideInLeft } from '../../shared/animations';
         group([
           query('@slideInLeft', animateChild()),
           style({ opacity: 0 }),
-          animate('400ms 0ms ease-out' ),
+          animate('400ms 0ms ease-out'),
         ]),
       ]),
       transition(':leave', [

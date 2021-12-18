@@ -5,7 +5,7 @@ import { Cart } from 'src/app/shared/models';
   selector: 'lbk-cart',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="relative">
+    <div class="relative cart">
       <button class="" type="button">
         <img
           class="inline-block"
