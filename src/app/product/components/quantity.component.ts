@@ -42,6 +42,7 @@ import {
 export class QuantityComponent {
   @Input() max = 1000;
   @Input() min = 0;
+
   @Input() quantity = 0;
   @Output() quantityChange = new EventEmitter<number>();
 
